@@ -1,11 +1,10 @@
 package baseball.game;
 
-import java.util.Arrays;
-
 import org.springframework.stereotype.Service;
 
 import baseball.game.dto.TargetResponse;
-import baseball.game.vo.BaseballNumber;
+import baseball.game.factory.RandomTargetStrategy;
+import baseball.game.factory.TargetFactory;
 import baseball.game.vo.Target;
 
 @Service
@@ -17,8 +16,8 @@ public class BaseballService {
     }
 
     public Long createGame() {
-        BaseballGame baseballGame = new BaseballGame(null, new Target(Arrays.asList(new BaseballNumber(1), new BaseballNumber(2), new BaseballNumber(3))));
-        BaseballGame persist = baseballRepository.save(baseballGame);
+        Target target = new TargetFactory(new RandomTargetStrategy()).create();
+        BaseballGame persist = baseballRepository.save(new BaseballGame(null, target));
         return persist.getId();
     }
 
