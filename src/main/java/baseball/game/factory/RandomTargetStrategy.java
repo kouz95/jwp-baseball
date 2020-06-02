@@ -6,7 +6,6 @@ import java.util.Random;
 
 import baseball.game.vo.BaseballNumber;
 import baseball.game.vo.Target;
-import baseball.game.vo.TargetDuplicatedException;
 
 public class RandomTargetStrategy implements TargetGenerateStrategy {
     private static final int MAX_NUMBER = 9;
@@ -20,9 +19,10 @@ public class RandomTargetStrategy implements TargetGenerateStrategy {
 
         while (numbers.size() < MAX_SIZE) {
             int number = random.nextInt(MAX_NUMBER) + MIN_NUMBER;
-            try {
-                numbers.add(new BaseballNumber(number));
-            } catch (TargetDuplicatedException ignored) {}
+            BaseballNumber baseballNumber = new BaseballNumber(number);
+            if (!numbers.contains(baseballNumber)) {
+                numbers.add(baseballNumber);
+            }
         }
 
         return new Target(numbers);

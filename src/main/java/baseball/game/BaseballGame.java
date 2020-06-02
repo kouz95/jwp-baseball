@@ -8,6 +8,7 @@ import baseball.game.vo.Target;
 public class BaseballGame {
     @Id
     private final Long id;
+
     @Embedded.Empty
     private final Target target;
 
@@ -22,5 +23,9 @@ public class BaseballGame {
 
     public Long getId() {
         return id;
+    }
+
+    public Target getTarget() {
+        return target;
     }
 }

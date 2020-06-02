@@ -37,4 +37,10 @@ class TargetTest {
         assertThatThrownBy(() -> new Target(Arrays.asList(one, two, duplicated)))
             .isInstanceOf(TargetDuplicatedException.class);
     }
+
+    @Test
+    void toNumbers() {
+        Target target = new Target(Arrays.asList(one, two, three));
+        assertThat(target.toNumbers()).isEqualTo("123");
+    }
 }

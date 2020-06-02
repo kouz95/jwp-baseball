@@ -1,5 +1,7 @@
 package baseball.game.dto;
 
+import baseball.game.vo.Target;
+
 public class TargetResponse {
     private String target;
 
@@ -12,6 +14,10 @@ public class TargetResponse {
 
     public static TargetResponse of(String answer) {
         return new TargetResponse(answer);
+    }
+
+    public static TargetResponse of(Target target) {
+        return new TargetResponse(target.toNumbers());
     }
 
     public String getTarget() {

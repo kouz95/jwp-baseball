@@ -22,6 +22,9 @@ public class BaseballService {
     }
 
     public TargetResponse showAnswer(String gameId) {
-        return TargetResponse.of("123");
+        BaseballGame baseballGame = baseballRepository.findById(Long.parseLong(gameId))
+            .orElseThrow(RuntimeException::new);
+
+        return TargetResponse.of(baseballGame.getTarget());
     }
 }

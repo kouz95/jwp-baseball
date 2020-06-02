@@ -4,6 +4,7 @@ create table if not exists BASEBALL_GAME (
 );
 
 create table if not exists BASEBALL_NUMBER (
-  baseball_game bigint not null,
+  baseball_game_id bigint not null,
+  baseball_game_key bigint not null,
   number bigint not null
 );

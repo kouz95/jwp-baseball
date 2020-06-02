@@ -1,5 +1,7 @@
 package baseball.game.vo;
 
+import static java.util.stream.Collectors.*;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -9,7 +11,7 @@ public class Target {
     private static final int TARGET_SIZE = 3;
     private static final int SELF = 1;
 
-    @MappedCollection(keyColumn = "number")
+    @MappedCollection(keyColumn = "baseball_game_key", idColumn = "baseball_game_id")
     private final List<BaseballNumber> baseballNumbers;
 
     public Target(List<BaseballNumber> baseballNumbers) {
@@ -35,6 +37,13 @@ public class Target {
         return numbers.stream()
             .filter(number -> number.equals(current))
             .count() > SELF;
+    }
+
+    public String toNumbers() {
+        return baseballNumbers.stream()
+            .mapToInt(BaseballNumber::getNumber)
+            .mapToObj(String::valueOf)
+            .collect(joining());
     }
 
     @Override
