@@ -1,6 +1,6 @@
-package baseball;
+package baseball.game;
 
-import static baseball.BaseballController.*;
+import static baseball.game.BaseballController.*;
 import static org.mockito.BDDMockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
@@ -12,7 +12,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
-import baseball.dto.BaseballAnswerResponse;
+import baseball.game.dto.TargetResponse;
 
 @WebMvcTest(controllers = BaseballController.class)
 class BaseballControllerTest {
@@ -37,7 +37,7 @@ class BaseballControllerTest {
         String gameId = "1";
 
         given(baseballService.showAnswer(gameId))
-            .willReturn(BaseballAnswerResponse.of("123"));
+            .willReturn(TargetResponse.of("123"));
 
         mockMvc.perform(get(BASEBALL_URI + "/" + gameId + "/answer"))
             .andDo(print())

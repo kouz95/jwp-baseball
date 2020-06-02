@@ -1,6 +1,6 @@
-package baseball;
+package baseball.game;
 
-import static baseball.BaseballController.*;
+import static baseball.game.BaseballController.*;
 
 import java.net.URI;
 
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import baseball.dto.BaseballAnswerResponse;
+import baseball.game.dto.TargetResponse;
 
 @RestController
 @RequestMapping(BASEBALL_URI)
@@ -31,8 +31,8 @@ public class BaseballController {
     }
 
     @GetMapping("/{id}/answer")
-    public ResponseEntity<BaseballAnswerResponse> showAnswer(@PathVariable String id) {
-        BaseballAnswerResponse baseballAnswerResponse = baseballService.showAnswer(id);
-        return ResponseEntity.ok(baseballAnswerResponse);
+    public ResponseEntity<TargetResponse> showAnswer(@PathVariable String id) {
+        TargetResponse targetResponse = baseballService.showAnswer(id);
+        return ResponseEntity.ok(targetResponse);
     }
 }
