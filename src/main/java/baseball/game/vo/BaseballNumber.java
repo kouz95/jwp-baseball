@@ -1,6 +1,6 @@
 package baseball.game.vo;
 
-import baseball.game.exception.InvalidBaseballNumberException;
+import java.util.Objects;
 
 public class BaseballNumber {
     private static final int MIN_NUMBER = 1;
@@ -13,5 +13,20 @@ public class BaseballNumber {
             throw new InvalidBaseballNumberException();
         }
         this.number = number;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        BaseballNumber that = (BaseballNumber)o;
+        return number == that.number;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number);
     }
 }

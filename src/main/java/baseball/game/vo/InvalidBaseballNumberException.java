@@ -1,4 +1,4 @@
-package baseball.game.exception;
+package baseball.game.vo;
 
 public class InvalidBaseballNumberException extends RuntimeException {
     public InvalidBaseballNumberException() {
