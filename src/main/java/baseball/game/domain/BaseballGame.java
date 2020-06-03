@@ -1,9 +1,7 @@
-package baseball.game;
+package baseball.game.domain;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Embedded;
-
-import baseball.game.vo.Target;
 
 public class BaseballGame {
     @Id

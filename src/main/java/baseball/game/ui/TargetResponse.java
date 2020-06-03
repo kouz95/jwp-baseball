@@ -1,6 +1,6 @@
-package baseball.game.dto;
+package baseball.game.ui;
 
-import baseball.game.vo.Target;
+import baseball.game.domain.Target;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TargetResponse {

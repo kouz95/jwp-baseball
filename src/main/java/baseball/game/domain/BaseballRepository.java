@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.game.domain;
 
 import org.springframework.data.repository.CrudRepository;
 

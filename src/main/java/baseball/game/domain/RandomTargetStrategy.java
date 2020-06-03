@@ -1,11 +1,8 @@
-package baseball.game.factory;
+package baseball.game.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import baseball.game.vo.BaseballNumber;
-import baseball.game.vo.Target;
 
 public class RandomTargetStrategy implements TargetGenerateStrategy {
     private static final int MAX_NUMBER = 9;

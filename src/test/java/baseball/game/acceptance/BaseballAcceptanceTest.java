@@ -1,6 +1,6 @@
 package baseball.game.acceptance;
 
-import static baseball.game.BaseballController.*;
+import static baseball.game.ui.BaseballController.*;
 import static io.restassured.RestAssured.*;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.DynamicTest.*;
@@ -19,7 +19,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
-import baseball.game.dto.TargetResponse;
+import baseball.game.ui.TargetResponse;
 import io.restassured.RestAssured;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)

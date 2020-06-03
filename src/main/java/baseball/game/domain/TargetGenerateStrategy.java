@@ -1,6 +1,4 @@
-package baseball.game.factory;
-
-import baseball.game.vo.Target;
+package baseball.game.domain;
 
 public interface TargetGenerateStrategy {
     Target generate();

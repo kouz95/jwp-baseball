@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.game.application;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.BDDMockito.*;
@@ -11,8 +11,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import baseball.game.vo.BaseballNumber;
-import baseball.game.vo.Target;
+import baseball.game.domain.BaseballGame;
+import baseball.game.domain.BaseballNumber;
+import baseball.game.domain.BaseballRepository;
+import baseball.game.domain.Target;
 
 @ExtendWith(MockitoExtension.class)
 class BaseballServiceTest {

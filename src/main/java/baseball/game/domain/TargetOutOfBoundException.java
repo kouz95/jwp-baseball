@@ -1,4 +1,4 @@
-package baseball.game.vo;
+package baseball.game.domain;
 
 public class TargetOutOfBoundException extends RuntimeException {
     public TargetOutOfBoundException() {
