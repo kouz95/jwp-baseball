@@ -31,7 +31,7 @@ public class BaseballController {
         return ResponseEntity.created(URI.create(BASEBALL_URI + "/" + gameId)).build();
     }
 
-    @GetMapping("/{id}/answer")
+    @GetMapping("/{id}/target")
     public ResponseEntity<TargetResponse> showTarget(@PathVariable String id) {
         Target target = baseballService.showTarget(id);
         return ResponseEntity.ok(TargetResponse.of(target));

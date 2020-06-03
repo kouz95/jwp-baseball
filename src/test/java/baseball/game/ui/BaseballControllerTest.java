@@ -37,13 +37,13 @@ class BaseballControllerTest {
     }
 
     @Test
-    void showAnswer() throws Exception {
+    void showTarget() throws Exception {
         String gameId = "1";
 
         given(baseballService.showTarget(gameId))
             .willReturn(new Target(Arrays.asList(new BaseballNumber(1), new BaseballNumber(2), new BaseballNumber(3))));
 
-        mockMvc.perform(get(BASEBALL_URI + "/" + gameId + "/answer"))
+        mockMvc.perform(get(BASEBALL_URI + "/" + gameId + "/target"))
             .andDo(print())
             .andExpect(status().isOk());
     }

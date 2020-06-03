@@ -10,8 +10,8 @@ public class TargetResponse {
         this.target = target;
     }
 
-    public static TargetResponse of(String answer) {
-        return new TargetResponse(answer);
+    public static TargetResponse of(String target) {
+        return new TargetResponse(target);
     }
 
     public static TargetResponse of(Target target) {

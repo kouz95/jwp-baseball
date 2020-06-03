@@ -46,7 +46,7 @@ public class BaseballAcceptanceTest {
             }),
             dynamicTest("정답 조회", () -> {
                 // 정답 조회를 요청한다.
-                TargetResponse response = showAnswer(extractId(location));
+                TargetResponse response = showTarget(extractId(location));
                 // 정답을 조회한다.
                 assertThat(response.getTarget()).isNotNull();
             })
@@ -64,12 +64,12 @@ public class BaseballAcceptanceTest {
             extract().header(HttpHeaders.LOCATION);
     }
 
-    private TargetResponse showAnswer(String gameId) {
+    private TargetResponse showTarget(String gameId) {
         return given().
             log().all().
             accept(MediaType.APPLICATION_JSON_VALUE).
             when().
-            get(BASEBALL_URI + "/" + gameId + "/answer").
+            get(BASEBALL_URI + "/" + gameId + "/target").
             then().
             log().all().
             extract().as(TargetResponse.class);
