@@ -1,14 +1,12 @@
 package baseball.game.dto;
 
 import baseball.game.vo.Target;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TargetResponse {
-    private String target;
+    private final String target;
 
-    private TargetResponse() {
-    }
-
-    public TargetResponse(String target) {
+    public TargetResponse(@JsonProperty(value = "target") String target) {
         this.target = target;
     }
 
