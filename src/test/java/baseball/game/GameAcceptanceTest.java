@@ -1,4 +1,4 @@
-package baseball.game.acceptance;
+package baseball.game;
 
 import static baseball.game.ui.BaseballController.*;
 import static io.restassured.RestAssured.*;
@@ -23,7 +23,7 @@ import baseball.game.ui.TargetResponse;
 import io.restassured.RestAssured;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
-public class BaseballAcceptanceTest {
+public class GameAcceptanceTest {
 
     @LocalServerPort
     private int port;
@@ -34,7 +34,7 @@ public class BaseballAcceptanceTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> acceptance() {
+    Stream<DynamicTest> gameAcceptance() {
         // given 게임이 생성 되어 있다.
         String location = startBaseball();
 
@@ -53,7 +53,7 @@ public class BaseballAcceptanceTest {
         );
     }
 
-    private String startBaseball() {
+    protected String startBaseball() {
         return given().
             log().all().
             when().
@@ -64,7 +64,7 @@ public class BaseballAcceptanceTest {
             extract().header(HttpHeaders.LOCATION);
     }
 
-    private TargetResponse showTarget(String gameId) {
+    protected TargetResponse showTarget(String gameId) {
         return given().
             log().all().
             accept(MediaType.APPLICATION_JSON_VALUE).
@@ -75,7 +75,7 @@ public class BaseballAcceptanceTest {
             extract().as(TargetResponse.class);
     }
 
-    private String extractId(String location) {
+    protected String extractId(String location) {
         List<String> path = Arrays.asList(location.split("/"));
         int lastIndex = path.size() - 1;
 
