@@ -6,7 +6,6 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.DynamicTest.*;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
@@ -34,25 +33,8 @@ public class GuessAcceptanceTest extends GameAcceptanceTest {
                 assertThat(guessResponse.getStrikeCount()).isNotNull();
                 assertThat(guessResponse.getBallCount()).isNotNull();
                 assertThat(guessResponse.getGuessResultType()).isNotNull();
-            }),
-            dynamicTest("게임 기록 조회", () -> {
-                // when 게임 기록 조회를 요청한다.
-                List<GuessResponse> guessResponses = showGuesses(gameId);
-                // then 게임 기록을 조회 한다.
-                assertThat(guessResponses).isNotEmpty();
             })
         );
-    }
-
-    private List<GuessResponse> showGuesses(String gameId) {
-        return given().
-            log().all().
-            param("gameId", gameId).
-            when().
-            get(GUESS_URI).
-            then().
-            log().all().
-            extract().jsonPath().getList(".", GuessResponse.class);
     }
 
     private GuessResponse guessTarget(String gameId) {

@@ -1,6 +1,7 @@
 package baseball.guess.ui;
 
 import baseball.guess.domain.GuessResultType;
+import baseball.guess.domain.Hint;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class GuessResponse {
@@ -16,6 +17,10 @@ public class GuessResponse {
         this.guessResultType = guessResultType;
         this.strikeCount = strikeCount;
         this.ballCount = ballCount;
+    }
+
+    public static GuessResponse of(Hint hint) {
+        return new GuessResponse(hint.getGuessResultType(), hint.getStrikeCount(), hint.getBallCount());
     }
 
     public GuessResultType getGuessResultType() {

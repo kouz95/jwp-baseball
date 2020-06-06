@@ -12,7 +12,7 @@ public class Target {
     private static final int TARGET_SIZE = 3;
     private static final int SELF = 1;
 
-    @MappedCollection(keyColumn = "number_index", idColumn = "baseball_game_id")
+    @MappedCollection(keyColumn = "number_index", idColumn = "entity_id")
     private final List<BaseballNumber> baseballNumbers;
 
     public Target(List<BaseballNumber> baseballNumbers) {
