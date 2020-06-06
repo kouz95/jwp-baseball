@@ -2,19 +2,24 @@ package baseball.game.domain;
 
 import static java.util.stream.Collectors.*;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import org.springframework.data.jdbc.core.mapping.AggregateReference;
 import org.springframework.data.relational.core.mapping.MappedCollection;
 
 public class Target {
     private static final int TARGET_SIZE = 3;
     private static final int SELF = 1;
 
+    private final AggregateReference<BaseballGame, Long> id;
+
     @MappedCollection(keyColumn = "number_index", idColumn = "baseball_game_id")
     private final List<BaseballNumber> baseballNumbers;
 
-    public Target(List<BaseballNumber> baseballNumbers) {
+    public Target(AggregateReference<BaseballGame, Long> id, List<BaseballNumber> baseballNumbers) {
+        this.id = id;
         validate(baseballNumbers);
         this.baseballNumbers = baseballNumbers;
     }
@@ -39,6 +44,41 @@ public class Target {
             .count() > SELF;
     }
 
+    public int calculateStrikeCount(String guessNumbers) {
+        List<BaseballNumber> numbers = toBaseballNumbers(guessNumbers);
+
+        int strikeCount = 0;
+        for (int i = 0; i < numbers.size(); i++) {
+            if (numbers.get(i).equals(baseballNumbers.get(i))) {
+                strikeCount++;
+            }
+        }
+
+        return strikeCount;
+    }
+
+    public int calculateBallCount(String guessNumbers) {
+        List<BaseballNumber> numbers = toBaseballNumbers(guessNumbers);
+
+        int ballCount = 0;
+        for (int i = 0; i < numbers.size(); i++) {
+            if (baseballNumbers.contains(numbers.get(i)) && !numbers.get(i).equals(baseballNumbers.get(i))) {
+                ballCount++;
+            }
+        }
+
+        return ballCount;
+    }
+
+    private List<BaseballNumber> toBaseballNumbers(String guessNumbers) {
+        List<BaseballNumber> numbers = Arrays.stream(guessNumbers.split(""))
+            .mapToInt(Integer::parseInt)
+            .mapToObj(BaseballNumber::new)
+            .collect(toList());
+        validate(numbers);
+        return numbers;
+    }
+
     public String toNumbers() {
         return baseballNumbers.stream()
             .mapToInt(BaseballNumber::getNumber)
@@ -53,7 +93,7 @@ public class Target {
         if (o == null || getClass() != o.getClass())
             return false;
         Target target = (Target)o;
-        return Objects.equals(baseballNumbers, target.baseballNumbers);
+        return Objects.equals(this.baseballNumbers, target.baseballNumbers);
     }
 
     @Override

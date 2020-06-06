@@ -5,9 +5,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import baseball.game.domain.BaseballGame;
 import baseball.game.domain.BaseballRepository;
-import baseball.game.domain.RandomTargetStrategy;
 import baseball.game.domain.Target;
 import baseball.game.domain.TargetFactory;
+import baseball.game.infra.RandomTargetStrategy;
 
 @Service
 public class BaseballService {

@@ -21,26 +21,27 @@ class TargetTest {
 
     @Test
     void create() {
-        assertThat(new Target(Arrays.asList(one, two, three))).isInstanceOf(Target.class);
+        assertThat(new Target(null, Arrays.asList(one, two, three))).isInstanceOf(
+            Target.class);
     }
 
     @Test
     void createFailsWhenOutOfBound() {
         BaseballNumber four = new BaseballNumber(4);
-        assertThatThrownBy(() -> new Target(Arrays.asList(one, two, three, four)))
+        assertThatThrownBy(() -> new Target(null, Arrays.asList(one, two, three, four)))
             .isInstanceOf(TargetOutOfBoundException.class);
     }
 
     @Test
     void createFailsWhenDuplicated() {
         BaseballNumber duplicated = new BaseballNumber(1);
-        assertThatThrownBy(() -> new Target(Arrays.asList(one, two, duplicated)))
+        assertThatThrownBy(() -> new Target(null, Arrays.asList(one, two, duplicated)))
             .isInstanceOf(TargetDuplicatedException.class);
     }
 
     @Test
     void toNumbers() {
-        Target target = new Target(Arrays.asList(one, two, three));
+        Target target = new Target(null, Arrays.asList(one, two, three));
         assertThat(target.toNumbers()).isEqualTo("123");
     }
 }

@@ -1,8 +1,12 @@
-package baseball.game.domain;
+package baseball.game.infra;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import baseball.game.domain.BaseballNumber;
+import baseball.game.domain.Target;
+import baseball.game.domain.TargetGenerateStrategy;
 
 public class RandomTargetStrategy implements TargetGenerateStrategy {
     private static final int MAX_NUMBER = 9;
@@ -22,6 +26,6 @@ public class RandomTargetStrategy implements TargetGenerateStrategy {
             }
         }
 
-        return new Target(numbers);
+        return new Target(null, numbers);
     }
 }

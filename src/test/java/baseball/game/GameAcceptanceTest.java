@@ -53,17 +53,6 @@ public class GameAcceptanceTest {
         );
     }
 
-    protected String startBaseball() {
-        return given().
-            log().all().
-            when().
-            post(BASEBALL_URI).
-            then().
-            log().all().
-            statusCode(HttpStatus.CREATED.value()).
-            extract().header(HttpHeaders.LOCATION);
-    }
-
     protected TargetResponse showTarget(String gameId) {
         return given().
             log().all().
@@ -73,6 +62,17 @@ public class GameAcceptanceTest {
             then().
             log().all().
             extract().as(TargetResponse.class);
+    }
+
+    protected String startBaseball() {
+        return given().
+            log().all().
+            when().
+            post(BASEBALL_URI).
+            then().
+            log().all().
+            statusCode(HttpStatus.CREATED.value()).
+            extract().header(HttpHeaders.LOCATION);
     }
 
     protected String extractId(String location) {

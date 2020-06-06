@@ -41,7 +41,7 @@ class BaseballControllerTest {
         String gameId = "1";
 
         given(baseballService.showTarget(gameId))
-            .willReturn(new Target(Arrays.asList(new BaseballNumber(1), new BaseballNumber(2), new BaseballNumber(3))));
+            .willReturn(new Target(null, Arrays.asList(new BaseballNumber(1), new BaseballNumber(2), new BaseballNumber(3))));
 
         mockMvc.perform(get(BASEBALL_URI + "/" + gameId + "/target"))
             .andDo(print())
