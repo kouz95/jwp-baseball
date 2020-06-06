@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.data.jdbc.core.mapping.AggregateReference;
 
 import baseball.game.domain.BaseballGame;
 import baseball.game.domain.BaseballNumber;
@@ -31,8 +30,7 @@ class BaseballServiceTest {
 
     @Test
     void createGame() {
-        when(baseballRepository.save(any())).thenReturn(new BaseballGame(1L, new Target(
-            AggregateReference.to(1L), Arrays.asList(
+        when(baseballRepository.save(any())).thenReturn(new BaseballGame(1L, new Target(Arrays.asList(
                 new BaseballNumber(1), new BaseballNumber(2), new BaseballNumber(3)))
             ));
         Long gameId = baseballService.createGame();

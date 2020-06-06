@@ -6,20 +6,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-import org.springframework.data.jdbc.core.mapping.AggregateReference;
 import org.springframework.data.relational.core.mapping.MappedCollection;
 
 public class Target {
     private static final int TARGET_SIZE = 3;
     private static final int SELF = 1;
 
-    private final AggregateReference<BaseballGame, Long> id;
-
     @MappedCollection(keyColumn = "number_index", idColumn = "baseball_game_id")
     private final List<BaseballNumber> baseballNumbers;
 
-    public Target(AggregateReference<BaseballGame, Long> id, List<BaseballNumber> baseballNumbers) {
-        this.id = id;
+    public Target(List<BaseballNumber> baseballNumbers) {
         validate(baseballNumbers);
         this.baseballNumbers = baseballNumbers;
     }

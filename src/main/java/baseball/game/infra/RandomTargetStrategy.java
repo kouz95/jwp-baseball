@@ -26,6 +26,6 @@ public class RandomTargetStrategy implements TargetGenerateStrategy {
             }
         }
 
-        return new Target(null, numbers);
+        return new Target(numbers);
     }
 }
